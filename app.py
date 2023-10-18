@@ -435,3 +435,7 @@ def scheduleAudioStream():
             "message" : " Successfully registered the stream ",
             "data" : {}
 }
+if __name__=='__main__':
+
+    app.run(debug=True)
+
