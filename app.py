@@ -5,10 +5,10 @@ from flask_cors import CORS,cross_origin
 
 import time
 app=Flask(__name__)
-CORS(app, origins=["http://localhost:3000","http://localhost:8000",'http://10.80.40.145:8000'])
+CORS(app, origins=["http://localhost:3000","http://localhost:8000",'http://10.80.40.145:8000'],supports_credentials=True)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route('/ybc/rm/ybcStart/',methods=['GET'])
+@app.route('/Ybc/Start/',methods=['GET'])
 def ybc_start():
     time.sleep(5)
     all_ready_started=True
@@ -17,7 +17,7 @@ def ybc_start():
     else:
         return {"success": False,"message": " YBC is already running ","error_code": 1001,"data": {}}
 
-@app.route('/ybc/rm/ybcStop/',methods=['GET'])
+@app.route('/Ybc/Stop/',methods=['GET'])
 def ybc_stop():
     processing=True
     streaming=True
@@ -33,13 +33,13 @@ def ybc_stop():
             if streaming:
                 return {
                         "success": False,
-                        "message": "Unable to stop the ybc since the stream is streaming state ",
+                        "message": "Unable to stop the Ybc since the stream is streaming state ",
                         "error_code": 1002,
                         "data": {}
                         }
             else:
                 return {"success": False,
-                    "message": "Unable to stop the ybc since the stream is processing ",
+                    "message": "Unable to stop the Ybc since the stream is processing ",
                     "error_code": 1002,
                     "data": {}
                     }
@@ -51,7 +51,7 @@ def ybc_stop():
                 "data": {}
                 }
 
-@app.route('/ybc/rm/ybcRestart/',methods=['GET'])
+@app.route('/Ybc/YbcRestart/',methods=['GET'])
 def ybc_restart():
 
     streams_processing=False
@@ -66,7 +66,7 @@ def ybc_restart():
     else:
         return {
                 "success": False,
-                "message": "Unable to stop the ybc since the stream is processing ",
+                "message": "Unable to stop the Ybc since the stream is processing ",
                 "error_code": 1002,
                 "data": {}
                 }
@@ -74,13 +74,13 @@ def ybc_restart():
     """if streams_are_in_streaming:
         return {
             "success": False,
-            "message": "Unable to stop the ybc since the stream is streaming state ",
+            "message": "Unable to stop the Ybc since the stream is streaming state ",
             "error_code": 1002,
             "data": {}
             }
 """
 """
-        ybc restart error
+        Ybc restart error
         return {
     "success": False,
     "message": " Unable to restart the YBC ",
@@ -89,7 +89,7 @@ def ybc_restart():
     }
     """
 
-@app.route("/ybc/rm/ybcStatus/",methods=['GET'])
+@app.route("/Ybc/Status/",methods=['GET'])
 def ybc_instance_active():
     status=True
     if status:
@@ -107,7 +107,7 @@ def ybc_instance_active():
 
 #Get Current Scheduler Configuration
 s=['abc']
-@app.route('/ybc/rm/getCurrentSchedulerConfig/',methods=['GET'])
+@app.route('/Ybc/GetCurrentSchedulerConfig/',methods=['GET'])
 def getCurrentSchedulerConfig():
     status=True
     if status:
@@ -132,7 +132,7 @@ def getCurrentSchedulerConfig():
 
 #Get Available Scheduler Configuration
 
-@app.route('/ybc/rm/getAvailableSchedulerConfig/',methods=['GET'])
+@app.route('/Ybc/GetAvailableSchedulerConfig/',methods=['GET'])
 def Get_Available_Scheduler_Configuration():
     success=True
 
@@ -151,7 +151,7 @@ def Get_Available_Scheduler_Configuration():
                 "error_code": 1500,
                 "data": {}
                 }
-@app.route('/ybc/rm/switchSchedulerConfig/',methods=['POST'])
+@app.route('/Ybc/SwitchSchedulerConfig/',methods=['POST'])
 def Switch_Scheduler_Configuration():
     data=request.json
     #print(data)
@@ -181,7 +181,7 @@ def Switch_Scheduler_Configuration():
 }
 """
 
-@app.route('/ybc/rm/getStreamInfo/',methods=['GET'])
+@app.route('/Ybc/GetStreamInfo/',methods=['GET'])
 def GetStreamInfo():
     return {
 "success": True,
@@ -230,7 +230,7 @@ sm=[
                 "service_streaming_status": "STREAMING",
                 "stream_is_offload": True
                 }]
-@app.route('/ybc/rm/getPrePositionStreamInfo/',methods=['GET'])
+@app.route('/Ybc/GetPrePositionStreamInfo/',methods=['GET'])
 def getPrePositionStreamInfo():
     return {
             "success": True,
@@ -249,7 +249,7 @@ def getPrePositionStreamInfo():
             "current_transmission_percentage " : 48
             }
             }
-@app.route('/ybc/rm/getAllStreamInfo/',methods=['GET'])
+@app.route('/Ybc/GetAllStreamInfo/',methods=['GET'])
 def getAllStreamInfo():
 
     success=True
@@ -268,7 +268,7 @@ def getAllStreamInfo():
                     }
 
 
-@app.route("/ybc/rm/getAllOffloadStreamInfo/",methods=['GET'])
+@app.route("/Ybc/GetAllOffloadStreamInfo/",methods=['GET'])
 def getAllOffloadStreamInfo():
     return {
 "success": True,
@@ -284,7 +284,7 @@ def getAllOffloadStreamInfo():
 "stream_is_offload": True
 } ]
 }
-@app.route('/ybc/rm/getRecommendationList/',methods=['GET'])
+@app.route('/Ybc/GetRecommendationList/',methods=['GET'])
 def getRecommendationList():
     return {"success": True,
 "message": " Successfully obtained the recommendation list ",
@@ -300,7 +300,7 @@ def getRecommendationList():
 }
 }
 
-@app.route('/ybc/rm/descheduleStream/',methods=['GET'])
+@app.route('/Ybc/DescheduleStream/',methods=['GET'])
 def deleteStream():
     sm.pop(-1)
 
@@ -310,7 +310,7 @@ def deleteStream():
 "data": {}
 }
 
-@app.route('/ybc/rm/deleteAllSchedules/',methods=['GET'])
+@app.route('/Ybc/DeleteAllSchedules/',methods=['GET'])
 def delete_all_streams():
     sm.clear()
     return {
@@ -319,21 +319,21 @@ def delete_all_streams():
 "data": {}
 }
 
-@app.route("/ybc/rm/scheduleStream/",methods=['POST'])
+@app.route("/Ybc/ScheduleStream/",methods=['POST'])
 def scheduleStream():
     return {
 "success" : True,
 "message" : " Successfully registered the stream ",
 "data" : {}
 }
-@app.route("/ybc/rm/scheduleOffloadStream/",methods=['POST'])
+@app.route("/Ybc/ScheduleOffloadStream/",methods=['POST'])
 def scheduleOffloadStream():
     return {
                 "success" : True,
                 "message" : " Successfully registered the stream ",
                 "data" : {}
                 }
-@app.route("/ybc/rm/updateStreamInfo/",methods=['POST'])
+@app.route("/Ybc/UpdateStreamInfo/",methods=['POST'])
 def updateStreamInfo():
     #print(request.json)
     return {
@@ -351,7 +351,7 @@ pp= [
                 "service_streaming_status": "STREAMING"
                 }
                 ]
-@app.route('/ybc/rm/schedulePrePositionStream/',methods=['POST'])
+@app.route('/Ybc/SchedulePrePositionStream/',methods=['POST'])
 def schedulePrePositionStream():
     print(request.json)
     return {
@@ -360,7 +360,7 @@ def schedulePrePositionStream():
                 "data" : {}
                 }
 
-@app.route('/ybc/rm/updatePrePositionStream/',methods=['POST'])
+@app.route('/Ybc/UpdatePrePositionStream/',methods=['POST'])
 def updatePrePositionStream():
     print(request.json)
     return {
@@ -369,7 +369,7 @@ def updatePrePositionStream():
             "data" : {}
             }
 
-@app.route('/ybc/rm/getAllPrePositionStreamInfo/',methods=['GET'])
+@app.route('/Ybc/GetAllPrePositionStreamInfo/',methods=['GET'])
 def getAllPrePositionStreamInfo():
 
     return {
@@ -377,7 +377,7 @@ def getAllPrePositionStreamInfo():
                 "message": " Successfully obtained all pre-position streams information ",
                 "data":pp
                 }
-@app.route('/ybc/rm/deschedulePrePositionStream/',methods=['GET'])
+@app.route('/Ybc/DeschedulePrePositionStream/',methods=['GET'])
 def deschedulePrePositionStream():
     #print(request.data)
     return {
@@ -386,7 +386,7 @@ def deschedulePrePositionStream():
             "data": {}
             }
 #audio
-@app.route("/ybc/rm/getAudioStreamInfo/",methods=['GET'])
+@app.route("/Ybc/GetAudioStreamInfo/",methods=['GET'])
 def getAudioStreamInfo():
     return {
                 "success": True,
@@ -404,7 +404,7 @@ def getAudioStreamInfo():
                 "service_streaming_status": "STREAMING"
                 }
                 }
-@app.route('/ybc/rm/getAllAudioStreamInfo/',methods=["GET"])
+@app.route('/Ybc/GetAllAudioStreamInfo/',methods=["GET"])
 def getAllAudioStreamInfo():
     return {
                 "success": True,
@@ -420,14 +420,14 @@ def getAllAudioStreamInfo():
                 }
                 ]
                 }
-@app.route('/ybc/rm/descheduleAudioStream',methods=['GET'])
+@app.route('/Ybc/DescheduleAudioStream',methods=['GET'])
 def descheduleAudioStream():
     return {
             "success": True,
             "message": " Successfully deleted the stream ",
             "data": {}
             }
-@app.route('/ybc/rm/scheduleAudioStream/',methods=['POST'])
+@app.route('/Ybc/ScheduleAudioStream/',methods=['POST'])
 def scheduleAudioStream():
     #print(request.json)
     return {
@@ -435,3 +435,52 @@ def scheduleAudioStream():
             "message" : " Successfully registered the stream ",
             "data" : {}
 }
+
+@app.route('/cap_public_website/FetchAllAlertDetails',methods=['GET'])
+def ndma():
+    #print(request.json)
+    return [
+    {
+        "severity": "ADVISORY",
+        "identifier": 1700649879487026,
+        "effective_start_time": "Wed Nov 22 16:05:00 IST 2023",
+        "effective_end_time": "Thu Nov 23 16:05:00 IST 2023",
+        "disaster_type": "Earthquake",
+        "area_description": "24 districts of Arunachal Pradesh",
+        "severity_level": "Likely",
+        "type": 0,
+        "actual_lang": "en",
+        "warning_message": "MOCK EXERCISE DON'T PANIC:  STATE-LEVEL MOCK EXERCISE on Earthquake is being conducted simultaneously in all distts of Arunachal Pradesh on 23rd Nov 23 from 9:00 am to 2:00 pm. Siren will be blown at 9 am at incident sites across the state, public is advised not to panic. Issued by SDMA Arunachal Pradesh.",
+        "disseminated": "true",
+        "severity_color": "Red",
+        "alert_id_sdma_autoinc": 22229,
+        "centroid": "96.85624667238118,28.066616430769745",
+        "alert_source": "Arunachal Pradesh SDMA",
+        "area_covered": "121789",
+        "sender_org_id": "26"
+    },{
+        "severity": "ADVISORY",
+        "identifier": 1700641078135037,
+        "effective_start_time": "Wed Nov 22 16:05:00 IST 2023",
+        "effective_end_time": "Thu Nov 23 16:05:00 IST 2023",
+        "disaster_type": "Earthquake",
+        "area_description": "24 districts of Arunachal Pradesh",
+        "severity_level": "Likely",
+        "type": 0,
+        "actual_lang": "en",
+        "warning_message": "MOCK EXERCISE DON'T PANIC:  STATE-LEVEL MOCK EXERCISE on Earthquake is being conducted simultaneously in all distts of Arunachal Pradesh on 23rd Nov 23 from 9:00 am to 2:00 pm. Siren will be blown at 9 am at incident sites across the state, public is advised not to panic. Issued by SDMA Arunachal Pradesh.",
+        "disseminated": "true",
+        "severity_color": "green",
+        "alert_id_sdma_autoinc": 22229,
+        "centroid": "96.85624667238118,28.066616430769745",
+        "alert_source": "Arunachal Pradesh SDMA",
+        "area_covered": "121789",
+        "sender_org_id": "26"
+    },
+
+]
+
+
+if __name__=='__main__':
+
+    app.run(debug=True,port=5000)

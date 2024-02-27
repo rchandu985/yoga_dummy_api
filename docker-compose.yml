@@ -1,0 +1,6 @@
+version: '3.1'
+services:
+  yoga_core_dummy_apis:
+    build: .
+    ports:
+      - 5000:5000
