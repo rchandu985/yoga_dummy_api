@@ -181,7 +181,7 @@ def Switch_Scheduler_Configuration():
 }
 """
 
-@app.route('/Ybc/GetStreamInfo/',methods=['GET'])
+@app.route('/Ybc/GetStreamInfo/',methods=['POST'])
 def GetStreamInfo():
     return {
 "success": True,
@@ -204,32 +204,7 @@ def GetStreamInfo():
 "stream_video_frame_rate": "VIDEO_FRAME_RATE_60"
 }
 }
-sm=[
-                {
-                "stream_id": "60c858a5555f247857000032",
-                "stream_start_time": 1658644800,
-                "stream_end_time": 1658646600,
-                "stream_schedule_duration": 1800,
-                "stream_name": "DDNewsLive",
-                "service_streaming_status": "STREAMING",
-                "stream_is_offload": True
-                },{
-                "stream_id": "60c858a5555f237857000032",
-                "stream_start_time": 1658644800,
-                "stream_end_time": 1658646600,
-                "stream_schedule_duration": 1800,
-                "stream_name": "DDNewsLive",
-                "service_streaming_status": "STREAMING",
-                "stream_is_offload": True
-                },
-    {"stream_id": "100c858a5555f237857000032",
-                "stream_start_time": 1658644800,
-                "stream_end_time": 1658646600,
-                "stream_schedule_duration": 1800,
-                "stream_name": "DDNewsLive",
-                "service_streaming_status": "STREAMING",
-                "stream_is_offload": True
-                }]
+sm=[{"stream_id": f"{x}0c858a5555f247857000032","stream_start_time": 1658644800-x,"stream_end_time": 1658646600+x,"stream_schedule_duration": 1800+x,"stream_name": f"DDNewsLive{x}","service_streaming_status": "STREAMING","stream_is_offload": True} for x in range(15)]
 @app.route('/Ybc/GetPrePositionStreamInfo/',methods=['GET'])
 def getPrePositionStreamInfo():
     return {
@@ -273,17 +248,15 @@ def getAllOffloadStreamInfo():
     return {
 "success": True,
 "message": " Successfully obtained all the offload stream information ",
-"data": [
-{
-"stream_id": "60c858a5555f247857000032",
-"stream_start_time": 1658644800,
-"stream_end_time": 1658646600,
+"data": [{
+"stream_id": f"{x}0c858a5555f247857000032",
+"stream_start_time": 1658644800-x,
+"stream_end_time": 1658646600+x,
 "stream_schedule_duration": 0,
 "stream_name": "DDNewsLive",
 "service_streaming_status": "STREAMING",
 "stream_is_offload": True
-} ]
-}
+} for x in range(15)]}
 @app.route('/Ybc/GetRecommendationList/',methods=['GET'])
 def getRecommendationList():
     return {"success": True,
@@ -291,9 +264,7 @@ def getRecommendationList():
 "data": {
 "count" : 2,
 "data" : [
-{"content_id": "6171516a555f2413e4000041",
-"start_time": 1638281167 },{"content_id": "6171518ac55f2413e4000041",
-"start_time": 1638281167 }],
+{"content_id": f"{x}6171516a555f2413e4000041","start_time": 1638281167+x} for x in range(10)],
 "date" : "2021-11-30 09:11:55.450168",
 "name" : "Recommended List for offload",
 "ver" : " v1.0 "
@@ -411,14 +382,14 @@ def getAllAudioStreamInfo():
                 "message": " Successfully obtained all the stream information ",
                 "data": [
                 {
-                "stream_id": "cff4e254c330360abe43f0895c29d350",
-                "stream_start_time": 1658644800,
-                "stream_end_time": 1682315104,
-                "stream_schedule_duration": 600,
+                "stream_id": f"{x}cff4e254c330360abe43f0895c29d350",
+                "stream_start_time": 1658644800-x,
+                "stream_end_time": 1682315104+x,
+                "stream_schedule_duration": 600+x,
                 "stream_name": "RAAGAM",
                 "service_streaming_status": "STREAMING"
                 }
-                ]
+                for x in range(15)]
                 }
 @app.route('/Ybc/DescheduleAudioStream',methods=['GET'])
 def descheduleAudioStream():
@@ -483,4 +454,4 @@ def ndma():
 
 if __name__=='__main__':
 
-    app.run(debug=True,port=5000)
+    app.run(debug=True,host="10.80.61.19",port=6000)
