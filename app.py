@@ -408,74 +408,74 @@ def scheduleAudioStream():
 }
     
 #analytics engine
-@app.route("/Ybc/Ae/OffloadStatus/",methos=['POST'])
+@app.route("/Ybc/Ae/OffloadStatus/",methods=['POST'])
 def AeOffloadStatus():
     return { "success": True, "message": "Successfully set the state of offload stream", "data": {} }
 
-@app.route("/Ybc/Ae/OffloadReset/",methos=['GET'])
+@app.route("/Ybc/Ae/OffloadReset/",methods=['GET'])
 def AeOffloadReset():
     return{ "success": True, "message": "YBC has been restarted", "data": {} }
 
-@app.route("/Ybc/Ae/SetTriggerTime/",methos=['GET'])
+@app.route("/Ybc/Ae/SetTriggerTime/",methods=['GET'])
 def AeSetTriggerTime():
     return { "data": {}, "message": "Default time has been successfully updated", "success": True }
 
-@app.route("/Ybc/Ae/TriggerEngine/",methos=['GET'])
+@app.route("/Ybc/Ae/TriggerEngine/",methods=['GET'])
 def AeTriggerEngine():
     return { "data": {}, "message": "Successfully triggered analytic engine", "success": True }
 
-@app.route("/Ybc/Ae/GetDefaultTime/",methos=['GET'])
+@app.route("/Ybc/Ae/GetDefaultTime/",methods=['GET'])
 def AeGetDefaultTime():
     return { "data": { "Default AE Trigger Time": "12:00" }, "message": "Successfully fetched default triggering time of the analytic engine", "success": True }
 
-@app.route("/Ybc/Ae/GetThreshold/",methos=['GET'])
+@app.route("/Ybc/Ae/GetThreshold/",methods=['GET'])
 def AeGetThreshold():
     return { "data": { "Offload threshold": 2 }, "message": "Successfully fetched offload threshold of the analytic engine", "success": True }
 
-@app.route("/Ybc/Ae/DbDelAllOffloadStreams/",methos=['GET'])
+@app.route("/Ybc/Ae/DbDelAllOffloadStreams/",methods=['GET'])
 def AeDbDelAllOffloadStreams():
     return { "data": {}, "message": "Successfully cleared offload queue", "success": True }
     
-@app.route("/Ybc/Ae/DbGetOffloadInfo/",methos=['GET'])
+@app.route("/Ybc/Ae/DbGetOffloadInfo/",methods=['GET'])
 def AeDbGetOffloadInfo():
     return { "data": {}, "message": "No Data Found", "success": True }
     
-@app.route("/Ybc/Ae/DbDelAllUeData/",methos=['GET'])
+@app.route("/Ybc/Ae/DbDelAllUeData/",methods=['GET'])
 def AeDbDelAllUeData():
     return { "data": True, "message": "Users deleted successfully", "success": True }
     
-@app.route("/Ybc/Ae/DbUeWithinBrh/",methos=['GET'])
+@app.route("/Ybc/Ae/DbUeWithinBrh/",methods=['GET'])
 def AeDbUeWithinBrh():
     return { "success": True, "message": "Data Found", "data": { "Number of Users": 6, "User Details": [ { "yogaLocationDataItem": { "yogaUserAltitude": 850.759951171875, "yogaUserLatitude": 12.9840704, "yogaUserLocationAccuracy": 11.613, "yogaUserLongitude": 77.5959881 }, "yogaMediaDataItem": { "yogaMediaContentId": "601d3a5d555f2414d8000000", "yogaMediaContentPlaybackCh annel": 7000, "yogaMediaContentPlaybackSt atus": 6002 }, "yogaTimestamp": "1614774865", "yogaUserDataItem": { "yogaUserDataId": "8b1805dc-a9b0-4fe4-abe5-b4 9780b528d6", "yogaUserDataSDKVersion": "0.1.1(2)" } } ]*3 } }
 
 
-@app.route("/Ybc/Ae/GetContentDetails/",methos=['POST'])
+@app.route("/Ybc/Ae/GetContentDetails/",methods=['POST'])
 def AeGetContentDetails():
     return { "success": True, "message": "Successfully fetched content details", "data": { } }
 
-@app.route("/Ybc/Ae/DbUniqueUe/",methos=['GET'])
+@app.route("/Ybc/Ae/DbUniqueUe/",methods=['GET'])
 def AeDbUniqueUe():
     return { "success": True, "message": "Data Found", "data": { "Number of Users": 6, "User Details": [ { "yogaLocationDataItem": { "yogaUserAltitude": 850.759951171875, "yogaUserLatitude": 12.9840704, "yogaUserLocationAccuracy": 11.613, "yogaUserLongitude": 77.5959881 }, "yogaMediaDataItem": { "yogaMediaContentId": "601d3a5d555f2414d8000000", "yogaMediaContentPlaybackCh annel": 7000, "yogaMediaContentPlaybackSt atus": 6002 }, "yogaTimestamp": "1614774865", "yogaUserDataItem": { "yogaUserDataId": "8b1805dc-a9b0-4fe4-abe5-b4 9780b528d6", "yogaUserDataSDKVersion": "0.1.1(2)" } } ]*3 } }
 
 
-@app.route("/Ybc/Ae/DbGetUeInfo/",methos=['GET'])
+@app.route("/Ybc/Ae/DbGetUeInfo/",methods=['GET'])
 def AeDbGetUeInfo():
     return { "success": True, "message": "Data Found", "data": { "Number of Users": 6, "User Details": [ { "yogaLocationDataItem": { "yogaUserAltitude": 850.759951171875, "yogaUserLatitude": 12.9840704, "yogaUserLocationAccuracy": 11.613, "yogaUserLongitude": 77.5959881 }, "yogaMediaDataItem": { "yogaMediaContentId": "601d3a5d555f2414d8000000", "yogaMediaContentPlaybackCh annel": 7000, "yogaMediaContentPlaybackSt atus": 6002 }, "yogaTimestamp": "1614774865", "yogaUserDataItem": { "yogaUserDataId": "8b1805dc-a9b0-4fe4-abe5-b4 9780b528d6", "yogaUserDataSDKVersion": "0.1.1(2)" } } ]*3 } }
 
-@app.route("/Ybc/Ae/DbGetVodUeInfo/",methos=['GET'])
+@app.route("/Ybc/Ae/DbGetVodUeInfo/",methods=['GET'])
 def AeDbGetVodUeInfo():
     return { "success": True, "message": "Data Found", "data": { "Number of Users": 6, "User Details": [ { "yogaLocationDataItem": { "yogaUserAltitude": 850.759951171875, "yogaUserLatitude": 12.9840704, "yogaUserLocationAccuracy": 11.613, "yogaUserLongitude": 77.5959881 }, "yogaMediaDataItem": { "yogaMediaContentId": "601d3a5d555f2414d8000000", "yogaMediaContentPlaybackCh annel": 7000, "yogaMediaContentPlaybackSt atus": 6002 }, "yogaTimestamp": "1614774865", "yogaUserDataItem": { "yogaUserDataId": "8b1805dc-a9b0-4fe4-abe5-b4 9780b528d6", "yogaUserDataSDKVersion": "0.1.1(2)" } } ]*3 } }
 
-@app.route("/Ybc/Ae/DbDelAllRecommendations/",methos=['GET'])
+@app.route("/Ybc/Ae/DbDelAllRecommendations/",methods=['GET'])
 def AeDbDelAllRecommendations():
     return { "success": True, "message": "All Recommendations have been deleted", "data": {} }
 
-@app.route("/Ybc/Ae/DbPutRecommendations/",methos=['POST'])
+@app.route("/Ybc/Ae/DbPutRecommendations/",methods=['POST'])
 def AeDbPutRecommendations():
     return { "data": {}, "message": "Stored the recommendations into the database", "success": True }
 
 
-@app.route("/Ybc/Ae/DbGetRecommendations/",methos=['GET'])
+@app.route("/Ybc/Ae/DbGetRecommendations/",methods=['GET'])
 def AeDbGetRecommendations():
     return {
             "success": True,
@@ -501,62 +501,63 @@ def AeDbGetRecommendations():
             }
             }
 
-@app.route("/Ybc/Ae/DbContentUsers/",methos=['GET'])
+@app.route("/Ybc/Ae/DbContentUsers/",methods=['GET'])
 def AeDbContentUsers():
     return { "success": True, "message": "Content and it’s users", "data": { "60c858a5555f247857000030":1,"60c858a5555f347857000030":2,"70c858a5555f247857000030":7,"60y858a5555f247857000030":1,"63c858a5555f247857000030":10,"60r858a5555f247857000030":76 ,"60c858a5555f247957000030":11,"60c858a5755f247857000030":26,"60c658a5555f247857000030":9,"60c858a5555f247857000036":12,"68c858a5555f247857000030":8}, }
 
-@app.route("/Ybc/Ae/DbContentUserMapLive/",methos=['GET'])
+@app.route("/Ybc/Ae/DbContentUserMapLive/",methods=['GET'])
 def AeDbContentUserMapLive():
     return { "success": True, "message": "Content and it’s users", "data": { "60c858a5555f247857000030":1,"60c858a5555f347857000030":2,"70c858a5555f247857000030":7,"60y858a5555f247857000030":1,"63c858a5555f247857000030":10,"60r858a5555f247857000030":76 ,"60c858a5555f247957000030":11,"60c858a5755f247857000030":26,"60c658a5555f247857000030":9,"60c858a5555f247857000036":12,"68c858a5555f247857000030":8}, }
 
 
-@app.route("/Ybc/Ae/DbLiveStreamUsers/",methos=['GET'])
+@app.route("/Ybc/Ae/DbLiveStreamUsers/",methods=['GET'])
 def AeDbLiveStreamUsers():
     return { "success": True, "message": "Data Found", "data": { "Number of Users": 6, "User Details": [ { "yogaLocationDataItem": { "yogaUserAltitude": 850.759951171875, "yogaUserLatitude": 12.9840704, "yogaUserLocationAccuracy": 11.613, "yogaUserLongitude": 77.5959881 }, "yogaMediaDataItem": { "yogaMediaContentId": "601d3a5d555f2414d8000000", "yogaMediaContentPlaybackCh annel": 7000, "yogaMediaContentPlaybackSt atus": 6002 }, "yogaTimestamp": "1614774865", "yogaUserDataItem": { "yogaUserDataId": "8b1805dc-a9b0-4fe4-abe5-b4 9780b528d6", "yogaUserDataSDKVersion": "0.1.1(2)" } } ]*3 } }
 
 
-@app.route("/Ybc/Ae/DbLiveUsers/",methos=['GET'])
+@app.route("/Ybc/Ae/DbLiveUsers/",methods=['GET'])
 def AeDbLiveUsers():
     return { "success": True, "message": "Data Found", "data": { "Number of Users": 6, "User Details": [ { "yogaLocationDataItem": { "yogaUserAltitude": 850.759951171875, "yogaUserLatitude": 12.9840704, "yogaUserLocationAccuracy": 11.613, "yogaUserLongitude": 77.5959881 }, "yogaMediaDataItem": { "yogaMediaContentId": "601d3a5d555f2414d8000000", "yogaMediaContentPlaybackCh annel": 7000, "yogaMediaContentPlaybackSt atus": 6002 }, "yogaTimestamp": "1614774865", "yogaUserDataItem": { "yogaUserDataId": "8b1805dc-a9b0-4fe4-abe5-b4 9780b528d6", "yogaUserDataSDKVersion": "0.1.1(2)" } } ]*3 } }
 
-@app.route("/Ybc/Ae/DbContentUserMapLive/",methos=['GET'])
-def AeDbContentUserMapLive():
+@app.route("/Ybc/Ae/DbLiveUsersCount/",methods=['GET'])
+def AeDbLiveUsersCount():
     return { "data": { "Number of Live Users": 0, "Number of Users in Broadband": 0, "Number of Users in Broadcast": 0 }, "message": "Live Users count", "success": True }
 
-@app.route("/Ybc/Ae/DbStart/",methos=['GET'])
+
+@app.route("/Ybc/Ae/DbStart/",methods=['GET'])
 def AeDbStart():
     return { "success": True, "message": "AE started successfully", "data": {} }
 
-@app.route("/Ybc/Ae/DbStop/",methos=['GET'])
+@app.route("/Ybc/Ae/DbStop/",methods=['GET'])
 def AeDbStop():
     return { "success": True, "message": "AE stopped successfully", "data": {} }
 
-@app.route("/Ybc/Ae/DbStatus/",methos=['GET'])
+@app.route("/Ybc/Ae/DbStatus/",methods=['GET'])
 def AeDbStatus():
     return { "data": { "Status": "Running", "Version": "v0.1.7" }, "message": "Status of the System", "success": True }
 
 
-@app.route("/Ybc/Ae/DbRestart/",methos=['GET'])
+@app.route("/Ybc/Ae/DbRestart/",methods=['GET'])
 def AeDbRestart():
     return { "success": True, "message": "AE restarted successfully", "data": {} }
 
 
 ##
-@app.route("/Ybc/Ae/Start/",methos=['GET'])
-def AeDbStart():
+@app.route("/Ybc/Ae/Start/",methods=['GET'])
+def AeStart():
     return { "success": True, "message": "AE started successfully", "data": {} }
 
-@app.route("/Ybc/Ae/Stop/",methos=['GET'])
-def AeDbStop():
+@app.route("/Ybc/Ae/Stop/",methods=['GET'])
+def AeStop():
     return { "success": True, "message": "AE stopped successfully", "data": {} }
 
-@app.route("/Ybc/Ae/Status/",methos=['GET'])
-def AeDbStatus():
+@app.route("/Ybc/Ae/Status/",methods=['GET'])
+def AeStatus():
     return { "data": { "Status": "Running", "Version": "v0.1.7" }, "message": "Status of the System", "success": True }
 
 
-@app.route("/Ybc/Ae/Restart/",methos=['GET'])
-def AeDbRestart():
+@app.route("/Ybc/Ae/Restart/",methods=['GET'])
+def AeRestart():
     return { "success": True, "message": "AE restarted successfully", "data": {} }
 
 
