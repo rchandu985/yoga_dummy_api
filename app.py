@@ -867,7 +867,7 @@ def AeOffloadStatus():
 def AeOffloadReset():
     return{ "success": True, "message": "YBC has been restarted", "data": {} }
 
-@app.route("/Ybc/Ae/SetTriggerTime/",methods=['GET'])
+@app.route("/Ybc/Ae/SetTriggerTime/",methods=['POST'])
 def AeSetTriggerTime():
     return { "data": {}, "message": "Default time has been successfully updated", "success": True }
 
