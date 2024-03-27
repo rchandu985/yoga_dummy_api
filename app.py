@@ -474,6 +474,10 @@ def AeDbDelAllRecommendations():
 def AeDbPutRecommendations():
     return { "data": {}, "message": "Stored the recommendations into the database", "success": True }
 
+@app.route("/Ybc/Ae/SetThreshold/",methods=['POST'])
+def AeSetThreshold():
+    return { "data": {}, "message": "Offload threshold has been succesfully updated", "success": True }
+
 
 @app.route("/Ybc/Ae/DbGetRecommendations/",methods=['GET'])
 def AeDbGetRecommendations():

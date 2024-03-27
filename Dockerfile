@@ -4,5 +4,5 @@ COPY app.py . /app/
 
 RUN pip install flask
 RUN pip install flask_cors
-EXPOSE 5000
-CMD ["flask","run","--host=10.80.61.19","--port=5000"]
+EXPOSE 6000
+CMD ["flask","run","--host=10.80.61.19","--port=6000"]

@@ -1,6 +1,6 @@
 version: '3.1'
 services:
-  yoga_core_dummy_apis:
+  yoga_broadcast_core_dashboard2.0_dummy_apis:
     build: .
     ports:
-      - 5000:5000
+      - 6000:6000
