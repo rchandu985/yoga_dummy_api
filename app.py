@@ -8,6 +8,411 @@ app=Flask(__name__)
 CORS(app, origins=["http://localhost:3000","http://localhost:8000",'http://10.80.40.145:8000'],supports_credentials=True)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+@app.route("/Auth/Login/",methods=['POST'])
+def Login():
+    return {
+    "message": "Successfully Login",
+    "login_status": True,
+    "user_action_permissions": [
+        {
+            "permission_name": "DeleteAllSchedules",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "DescheduleAudioStream",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "DeschedulePrePositionStream",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "DescheduleStream",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "GetAllAudioStreamInfo",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "GetAllOffloadStreamInfo",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "GetAllPrePositionStreamInfo",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "GetAllStreamInfo",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "GetAudioStreamInfo",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "GetAvailableSchedulerConfig",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "GetCurrentSchedulerConfig",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "GetPrePositionStreamInfo",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "GetRecommendationList",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "GetStreamInfo",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "ScheduleAudioStream",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "ScheduleOffloadStream",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "SchedulePrePositionStream",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "ScheduleStream",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "SwitchSchedulerConfig",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "UpdatePrePositionStream",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "UpdateStreamInfo",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "YbcRestart",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "YbcStart",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "YbcStatus",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "YbcStop",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "PushToDigicaster",
+            "related": "Emergency Alerts"
+        },
+        {
+            "permission_name": "AeCheckThreshold",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbCheckOffloadStream",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbCheckThreshold",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbContentUserMapLive",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbContentUsers",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbDelAllOffloadStreams",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbDelAllRecommendations",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbDelAllUeData",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbGetOffloadInfo",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbGetRecommendations",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbGetUeInfo",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbGetVodUeInfo",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbLiveStreamUsers",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbLiveUsers",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbLiveUsersCount",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbPutRecommendations",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbRestart",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbStart",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbStatus",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbStop",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbUeWithinBrh",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeDbUniqueUe",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeGetContentDetails",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeGetDefaultTime",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeGetThreshold",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeOffloadReset",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeOffloadStatus",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeRestart",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeSetThreshold",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeSetTriggerTime",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeStart",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeStatus",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeStop",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "AeTriggerEngine",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "GetEmergencyAlertsConfigurationData",
+            "related": "Emergency Alerts"
+        },
+        {
+            "permission_name": "GetEmergencyAlertsData",
+            "related": "Emergency Alerts"
+        },
+        {
+            "permission_name": "test",
+            "related": "AnalyticsEngine"
+        },
+        {
+            "permission_name": "DeleteAllAlerts",
+            "related": "Emergency Alerts"
+        },
+        {
+            "permission_name": "ReadDeviceRfAllInputSettingsData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "GetAboutDevice",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "GetDeviceAllInputSettingsData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "GetDeviceAllOutputParameetersData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadAsi1OutputConfigurationData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadAsi2OutputConfigurationData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadAsiAllInputSettingsData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadAllInputMoipSettingsData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadMoip1OutputConfigurationData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadMoip1OutputStreamConfigurationData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadMoip2OutputConfigurationData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadMoip2OutputStreamConfigurationData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadMoipSrcfiltersAllInputSettingsData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadMoipSourceSelectionAllInputSettingsData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadAbrAllInputSettingsData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadZixiAllInputSettingsData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadSrtAllInputSettingsData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "GetAllPeInformation",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ReadControlDeBissConditionalAccessodersAllConigurationData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "module_name",
+            "related": "YBC"
+        },
+        {
+            "permission_name": "ConfigureRFPorts",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ConfigureAsi",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ConfigureMoip",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ConfigureMoipSrcFilter",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ConfigureMoipSourceSelection",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ConfigureAbr",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ConfigureZixi",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ConfigureSrt",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ConfigurePe",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "AccessAllDecodersConfigurationData",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "ConfigureDecoders",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "Backup",
+            "related": "IRD-Synamedia"
+        },
+        {
+            "permission_name": "BrhStastics",
+            "related": "Brh"
+        }
+    ],
+    "user_navbar_permissions": [
+        "IRD-Synamedia",
+        "Brh",
+        "AnalyticsEngine",
+        "Emergency Alerts",
+        "YBC"
+    ],
+    "is_superuser": True
+}
+
 @app.route('/Ybc/Start/',methods=['GET'])
 def ybc_start():
     time.sleep(5)
