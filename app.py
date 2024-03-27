@@ -3,31 +3,14 @@ import json
 from flask import Flask,request
 from flask_cors import CORS,cross_origin
 from flask_httpauth import HTTPBasicAuth
-import mysql.connector
-
+import requests
 import time
 app=Flask(__name__)
 CORS(app, origins=["http://localhost:3000","http://localhost:8000",'http://10.80.40.145:8000'],supports_credentials=True)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 
-# MySQL configuration
-MYSQL_HOST = 'localhost'
-MYSQL_USER = 'root'
-MYSQL_PASSWORD = '01000011'
-MYSQL_DB = 'yoga_broadcast_core'
-
-# Connect to MySQL
-db_connection = mysql.connector.connect(
-    host=MYSQL_HOST,
-    user=MYSQL_USER,
-    password=MYSQL_PASSWORD,
-    database=MYSQL_DB
-)
-
-# Create a cursor
-cursor = db_connection.cursor(dictionary=True)
-
+host="10.80.61.19"
 auth = HTTPBasicAuth()
 @auth.verify_password
 def verify_password(username, password):
@@ -42,16 +25,11 @@ def GetUserInformation():
     """Protected view."""
     # Get the username from the request
     username = request.authorization.username
-    q=f"SELECT first_name,last_name,email,is_superuser FROM auth_user where (username=dev)"
-    #print(q)
-    cursor.execute("SELECT first_name, last_name, email, is_superuser FROM auth_user WHERE username = %s", (username,))
+    password=request.authorization.password
+    
+    res=requests.get(f"http://{host}:8000/Auth/GetUserInformation/",auth=(username,password))
 
-    users = cursor.fetchone()
-
-    # Convert the result into a list of dictionaries
-    users.update({"full_name":users.get("first_name")+" "+users.get("last_name"),"username":username})
-    return    {"message": "Successfully Obtained The User User Details","profile":users}
-
+    return res.json()
 
 
 @app.route("/Auth/Login/",methods=['POST'])
@@ -1066,4 +1044,4 @@ def ndma():
 
 if __name__=='__main__':
 
-    app.run(debug=True,host="10.80.61.19",port=6000)
+    app.run(debug=True,host=host,port=6000)
